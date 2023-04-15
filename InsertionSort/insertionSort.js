@@ -1,19 +1,23 @@
-const input = process.argv[2] // Input example: 5, 3, 8, 4, 2
-const strArray = input.split(",")
-let array = strArray.map(str => parseInt(str));
+const deretBilangan = [4,9,12,5] // inputan dari user
+let urutan, index
 
-function insertionSort(arr) {
-  let len = arr.length;
-  for (let i = 1; i < len; i++) {
-    let current = parseInt(arr[i]);
-    let j = i - 1;
-    while (j >= 0 && parseInt(arr[j]) > current) {
-      arr[j + 1] = arr[j];
-      j--;
+function insertionSort(deretAngka) {
+  const panjangArray = deretAngka.length // panjang array = 4
+
+  for(urutan = 1; urutan < panjangArray; urutan++) { // mengulang dari urutan 1 sampai 3
+    for (index = urutan; index > 0; index--) { // ulang terus mulai dari index = urutan selama index lebih dari 0
+
+      if (deretAngka[index] < deretAngka[index - 1]) { // apakah angka di index saat ini kurang dari angka di index sebelumnya
+        // jika iya, maka ditukar
+        const tampung = deretAngka[index]
+        deretAngka[index] = deretAngka[index - 1] 
+        deretAngka[index - 1] = tampung 
+      }
     }
-    arr[j + 1] = current;
   }
-  return arr;
+
+  return deretAngka
 }
 
-console.log(insertionSort(array)); // Output example: [2, 3, 4, 5, 8]
+const print = insertionSort(deretBilangan)
+document.write(print)

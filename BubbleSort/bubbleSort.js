@@ -1,20 +1,23 @@
-const input = process.argv[2] // Input example: 5, 3, 8, 4, 2
-const strArray = input.split(",")
-let array = strArray.map(str => parseInt(str));
+const deretBilangan = [4,9,12,5] // inputan dari user
+let urutan, index
 
-function bubbleSort(arr) {
-  let len = arr.length;
-  for (let i = 0; i < len - 1; i++) {
-    for (let j = 0; j < len - i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        // swap arr[j] and arr[j+1]
-        let temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
+function bubblesort(deretAngka) {
+
+  const panjangArray = deretAngka.length // panjang array = 4
+
+  for (urutan = 0; urutan < panjangArray; urutan ++) { // mengulang dari urutan pertama sampai keempat
+    for (index = 0; index < panjangArray - 1; index ++ ) {
+      if (deretAngka[index] > deretAngka[index + 1]) { // cek apakah deretAngka saat ini lebih besar daripada deretAngka setelahnya
+        // jika iya, ditukar
+        const tampung = deretAngka[index] // 6
+        deretAngka[index] = deretAngka[index + 1] // deretAngka[index] = 3
+        deretAngka[index + 1] = tampung // deretAngka[index + 1] = 6
       }
     }
   }
-  return arr;
+
+  return deretAngka
 }
 
-console.log(bubbleSort(array)); // Output: [2, 3, 4, 5, 8]
+const print = bubblesort(deretBilangan)
+document.write(print)
